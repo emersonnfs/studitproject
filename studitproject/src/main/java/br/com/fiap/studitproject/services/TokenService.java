@@ -25,7 +25,7 @@ public class TokenService {
         Algorithm alg = Algorithm.HMAC256(secret);
         var token = JWT.create()
                 .withSubject(credencial.email())
-                .withExpiresAt(Instant.now().plus(1, ChronoUnit.HOURS))
+                .withExpiresAt(Instant.now().plus(6, ChronoUnit.HOURS))
                 .withIssuer("studitproject")
                 .sign(alg);
 

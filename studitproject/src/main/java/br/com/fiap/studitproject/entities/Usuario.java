@@ -1,5 +1,6 @@
 package br.com.fiap.studitproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,14 @@ public class Usuario implements UserDetails {
     @NotNull(message = "A data de nascimento é obrigatória")
     @Column(name = "DATA_USUARIO")
     private String dataNascimento;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Exercicio> exercicios;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Resumo> resumos;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
