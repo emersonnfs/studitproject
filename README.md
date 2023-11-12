@@ -12,5 +12,4 @@ Guilherme De Jesus Ferreira - RM: 95542
 </br>
 João Victor Oliveira Da Silva - RM: 94231
 ---
-
-https://www.postman.com/emersonnfs1996/workspace/studit-api/collection/23679644-81e27032-6b21-4c6f-94eb-af8a2698a631
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/23679644-81e27032-6b21-4c6f-94eb-af8a2698a631?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D23679644-81e27032-6b21-4c6f-94eb-af8a2698a631%26entityType%3Dcollection%26workspaceId%3D823a0d7c-908a-4fc5-9fd4-0ac328d1a6bb)
