@@ -50,4 +50,32 @@ public class ResumoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Resumo resumo) {
+        Optional<Resumo> existingResumo = resumoService.getById(id);
+
+        if (existingResumo.isPresent()) {
+            Resumo updatedResumo = existingResumo.get();
+            updatedResumo.setNome(resumo.getNome());
+            updatedResumo.setConteudo(resumo.getConteudo());
+
+            resumoRepository.save(updatedResumo);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
+        Optional<Resumo> resumo = resumoService.getById(id);
+
+        if (resumo.isPresent()) {
+            resumoRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

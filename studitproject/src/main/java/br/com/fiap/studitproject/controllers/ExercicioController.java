@@ -52,5 +52,34 @@ public class ExercicioController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody Exercicio exercicio) {
+        Optional<Exercicio> existingExercicio = exercicioService.getById(id);
+
+        if (existingExercicio.isPresent()) {
+            Exercicio updatedExercicio = existingExercicio.get();
+            updatedExercicio.setPergunta(exercicio.getPergunta());
+            updatedExercicio.setAlternativas(exercicio.getAlternativas());
+            updatedExercicio.setResposta(exercicio.getResposta());
+            updatedExercicio.setResolucao(exercicio.getResolucao());
+
+            exercicioRepository.save(updatedExercicio);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
+        Optional<Exercicio> exercicio = exercicioService.getById(id);
+
+        if (exercicio.isPresent()) {
+            exercicioRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
